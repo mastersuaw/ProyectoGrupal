@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoNorte — Vehículos en venta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a222d;
+      --border: #2a3544;
+      --text: #e8edf4;
+      --muted: #8b9ab0;
+      --accent: #e85d04;
+      --accent-dim: #c44e03;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.85rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .contact-top {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .contact-top strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: 2.75rem 0 2rem;
+    }
+
+    .hero h1 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      letter-spacing: 0.02em;
+      font-weight: 400;
+      line-height: 1.1;
+      max-width: 18ch;
+    }
+
+    .hero p {
+      margin-top: 0.85rem;
+      max-width: 42ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 2rem 0 1.25rem;
+    }
+
+    .filters button {
+      font-family: inherit;
+      font-size: 0.875rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .filters button:hover {
+      color: var(--text);
+      border-color: var(--muted);
+    }
+
+    .filters button.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      padding-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--muted);
+      transform: translateY(-2px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: var(--border);
+    }
+
+    .card-body {
+      padding: 1.1rem 1.15rem 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .meta {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .price {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: auto;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      width: fit-content;
+      transition: color 0.15s;
+    }
+
+    .card a:hover {
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap header-inner">
+      <p class="logo">AUTO<span>NORTE</span></p>
+      <p class="contact-top">Consultas: <strong>+54 11 5555-2200</strong> · ventas@autonorte.demo</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Vehículos seleccionados, precio claro</h1>
+      <p>Stock actualizado con garantía y documentación al día. Coordiná una visita o pedí más fotos por WhatsApp.</p>
+    </section>
+
+    <div class="filters" id="filters" role="group" aria-label="Filtrar por tipo">
+      <button type="button" class="active" data-filter="todos">Todos</button>
+      <button type="button" data-filter="auto">Autos</button>
+      <button type="button" data-filter="suv">SUV</button>
+      <button type="button" data-filter="pickup">Pick-ups</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> AutoNorte · Dirección de ejemplo 1234, CABA · Horario lun–sáb 9–18 h</div>
+  </footer>
+
+  <script>
+    const vehiculos = [
+      {
+        tipo: "auto",
+        nombre: "Toyota Corolla 1.8 XEI",
+        año: 2021,
+        km: "42.000 km",
+        precio: "U$S 18.900",
+        img: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=800&q=80",
+      },
+      {
+        tipo: "suv",
+        nombre: "Volkswagen Tiguan 2.0 TSI",
+        año: 2020,
+        km: "58.000 km",
+        precio: "U$S 24.500",
+        img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&q=80",
+      },
+      {
+        tipo: "pickup",
+        nombre: "Ford Ranger XLT 3.2",
+        año: 2019,
+        km: "89.000 km",
+        precio: "U$S 22.200",
+        img: "https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&q=80",
+      },
+      {
+        tipo: "auto",
+        nombre: "Peugeot 208 1.6 Allure",
+        año: 2022,
+        km: "28.000 km",
+        precio: "U$S 14.750",
+        img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80",
+      },
+      {
+        tipo: "suv",
+        nombre: "Honda HR-V EX-L",
+        año: 2021,
+        km: "35.000 km",
+        precio: "U$S 21.000",
+        img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80",
+      },
+      {
+        tipo: "pickup",
+        nombre: "Toyota Hilux SRX 2.8",
+        año: 2022,
+        km: "52.000 km",
+        precio: "U$S 32.800",
+        img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80",
+      },
+    ];
+
+    const grid = document.getElementById("grid");
+    const filterButtons = document.querySelectorAll("#filters button");
+
+    function render(filtro) {
+      const list =
+        filtro === "todos" ? vehiculos : vehiculos.filter((v) => v.tipo === filtro);
+      grid.innerHTML = list
+        .map(
+          (v) => `
+        <article class="card">
+          <img src="${v.img}" alt="${v.nombre}" loading="lazy" width="400" height="180" />
+          <div class="card-body">
+            <h2>${v.nombre}</h2>
+            <p class="meta">${v.año} · ${v.km}</p>
+            <p class="price">${v.precio}</p>
+            <a href="mailto:ventas@autonorte.demo?subject=Consulta%20${encodeURIComponent(v.nombre)}">Consultar</a>
+          </div>
+        </article>`
+        )
+        .join("");
+    }
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        render(btn.dataset.filter);
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    render("todos");
+  </script>
+</body>
+</html>
